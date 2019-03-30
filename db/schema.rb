@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190330120600) do
+ActiveRecord::Schema.define(version: 20190330135501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20190330120600) do
     t.bigint "users_id"
     t.bigint "cards_id"
     t.index ["cards_id"], name: "index_cards_users_on_cards_id"
-    t.index ["users_id"], name: "index_cards_users_on_users_id"
+    t.index ["users_id", "cards_id"], name: "index_cards_users_on_users_id_and_cards_id", unique: true
   end
 
   create_table "categories", force: :cascade do |t|

@@ -2,13 +2,19 @@ class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
 
   def subscribe
-    CardsUsers.create(users_id: params[:user_id], cards_id: params[:card_id])
+    CardsUser.find_or_create_by(users_id: params[:user_id], cards_id: params[:id])
+    redirect_back fallback_location: root_path
+  end
+
+  def unsubscribe
+    CardsUser.where(users_id: params[:user_id], cards_id: params[:id]).delete_all
+    redirect_back fallback_location: root_path
   end
 
   # GET /cards
   # GET /cards.json
   def index
-    @categories =  Category.all
+    @categories =  Category.includes(:users).all
     @cards = params[:category_id] ? Card.find_by(category_id: params[:category_id]) : Card.all
     @cards = [] unless @cards
   end
