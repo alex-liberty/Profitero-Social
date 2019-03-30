@@ -21,7 +21,11 @@
       <li><%= link_to cat.name, cards_path(category_id: cat.id) %></li>
     <% end %>
   </ul>
-  <%= yield %>
+  <% if current_user %>
+    <%= yield %>
+  <% else %>
+    please login first
+  <% end %>
 </div>
 </body>
 </html>

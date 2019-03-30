@@ -1,6 +1,10 @@
 class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
 
+  def subscribe
+    CardsUsers.create(users_id: params[:user_id], cards_id: params[:card_id])
+  end
+
   # GET /cards
   # GET /cards.json
   def index

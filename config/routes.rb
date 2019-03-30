@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   get 'login/show'
 
-  resources :cards
+  resources :cards do
+    member do
+      post :subscribe
+    end
+  end
 
   resources :login
 
