@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   get 'login/show'
 
   resources :cards
+
+  resources :login
+
   get 'tags_users/insert'
 
   get 'tags_users/delete'
