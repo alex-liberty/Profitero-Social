@@ -10,12 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190330082836) do
+ActiveRecord::Schema.define(version: 20190330104233) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "cards", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "users_id"
+    t.string "name"
+    t.time "event_date"
+    t.string "title"
+    t.string "max_users_count"
+    t.string "users"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_cards_on_category_id"
+    t.index ["users_id"], name: "index_cards_on_users_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "tags_users", force: :cascade do |t|
+    t.bigint "users_id"
+    t.bigint "tags_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tags_id"], name: "index_tags_users_on_tags_id"
+    t.index ["users_id"], name: "index_tags_users_on_users_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -28,4 +58,5 @@ ActiveRecord::Schema.define(version: 20190330082836) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "cards", "categories"
 end
