@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :chats
+
+  resource :me, only: [:update, :edit], controller: :me
+  resources :users, only: [:index, :show]
 
   resources :cards do
     member do
