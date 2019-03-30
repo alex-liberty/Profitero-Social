@@ -14,6 +14,9 @@ class ApplicationController < ActionController::Base
   end
 
   def check_login
-    redirect_to controller: 'login', action: 'show' if !session[:user_id] && request.env["REQUEST_URI"] != "/login/show"
+    #binding.pry
+    if !session[:user_id] && request.env["REQUEST_URI"] != "/login/show"
+      redirect_to controller: 'login', action: 'show'
+    end
   end
 end
