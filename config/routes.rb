@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'login/show'
+
+  resources :cards
+  get 'tags_users/insert'
+
+  get 'tags_users/delete'
+
   get 'sessions/create'
 
   get 'sessions/destroy'
@@ -12,5 +19,5 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:index]
 
-  root :to => 'home#index'
+  root to: redirect("cards#path")
 end
