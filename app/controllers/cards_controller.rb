@@ -23,6 +23,7 @@ class CardsController < ApplicationController
 
   # POST /cards
   # POST /cards.json
+  #
   def create
     @card = Card.new(card_params)
 
@@ -69,6 +70,6 @@ class CardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def card_params
-      params.fetch(:card, {})
+      params.require(:card).permit(:name, :title, :event_date, :max_users_count)
     end
 end
