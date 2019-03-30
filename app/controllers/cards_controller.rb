@@ -15,13 +15,16 @@ class CardsController < ApplicationController
   # GET /cards.json
   def index
     @categories =  Category.includes(:users).all
-    @cards = params[:category_id] ? Card.find_by(category_id: params[:category_id]) : Card.all
-    @cards = [] unless @cards
+    @cards = params[:category_id] ? Card.where(category_id: params[:category_id]).all : Card.all
   end
 
   # GET /cards/1
   # GET /cards/1.json
   def show
+  end
+
+  def categories_list
+    @categories_list ||= Category.all
   end
 
   # GET /cards/new
@@ -77,11 +80,12 @@ class CardsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_card
+
       @card = Card.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def card_params
-      params.require(:card).permit(:name, :title, :event_date, :max_users_count)
+      params.require(:card).permit(:name, :title, :event_date, :max_users_count, :category_id)
     end
 end
