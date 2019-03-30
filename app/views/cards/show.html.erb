@@ -1,4 +1,53 @@
 <p id="notice"><%= notice %></p>
 
+<div class="flex-container">
+  <div class="width-50 show-block">
+    <%= render "card", card:@card %>
+  </div>
+
+  <div class="chat width-50 show-block">
+    <%# app/views/chats/index.html.erb %>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-9 col-md-10 bg-light full-height">
+          <div class="container-fluid">
+            <div class="chat-box py-2">
+              <h4 class="username d-none mb-3"></h4>
+              <% @messages.each do |chat| %>
+                <div class="col-12">
+                  <div class="chat bg-secondary d-inline-block text-left text-white mb-2">
+                    <div class="chat-bubble">
+                      <small class="chat-username"><%= chat.username %></small>
+                      <p class="m-0 chat-message"><%= chat.message %></p>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+            <div class="chat-text-input">
+              <%= form_with(model: @message, remote: true, format: :json, id: 'card-form', url: {controller: :cards, action: :create_message}) do |form| %>
+                <% if @message.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@message.errors.count, "error") %> prohibited this chat from being saved:</h2>
+                    <ul>
+                      <% @message.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+                <div class="field position-relative">
+                  <%= form.text_field :message, id: :message, class: "form-control", required: true %>
+                  <%= form.hidden_field :username, id: :username %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <%= link_to 'Edit', edit_card_path(@card) %> |
 <%= link_to 'Back', cards_path %>

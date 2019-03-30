@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
-  get 'login/show'
+  resources :chats
 
   resources :cards do
     member do
       post :subscribe
       post :unsubscribe
+      post :create_message
     end
   end
 
-  resources :login
+  get 'login/show'
 
   get 'tags_users/insert'
 

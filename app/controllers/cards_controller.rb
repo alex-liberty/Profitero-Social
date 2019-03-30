@@ -21,6 +21,9 @@ class CardsController < ApplicationController
   # GET /cards/1
   # GET /cards/1.json
   def show
+    @messages = Chat.all
+    @message = Chat.new
+
   end
 
   def categories_list
@@ -30,6 +33,7 @@ class CardsController < ApplicationController
   # GET /cards/new
   def new
     @card = Card.new
+    @message = Chat.new
   end
 
   # GET /cards/1/edit
@@ -41,7 +45,6 @@ class CardsController < ApplicationController
   #
   def create
     @card = Card.new(card_params)
-
     respond_to do |format|
       if @card.save
         format.html { redirect_to @card, notice: 'Card was successfully created.' }
@@ -49,6 +52,21 @@ class CardsController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @card.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def create_message
+    @card = Card.find_by(id: params[:id])
+    @message = Chat.new(chat_params)
+    respond_to do |format|
+      if @message.save
+        p @message
+        format.html { redirect_to @card, notice: 'Message was successfully posted.' }
+        format.json { render :show, status: :created, location: @card }
+      else
+        format.html { render :new }
+        format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -88,4 +106,9 @@ class CardsController < ApplicationController
     def card_params
       params.require(:card).permit(:name, :title, :event_date, :max_users_count, :category_id)
     end
+
+    def chat_params
+      params.require(:chat).permit(:username, :message, :chat_id)
+    end
+
 end
