@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
   get 'home/index'
 
   get 'auth/:provider/callback', to: 'sessions#create'
