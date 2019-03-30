@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'login/show'
+
   resources :cards
   get 'tags_users/insert'
 
