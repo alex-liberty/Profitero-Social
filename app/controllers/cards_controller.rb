@@ -4,7 +4,9 @@ class CardsController < ApplicationController
   # GET /cards
   # GET /cards.json
   def index
-    @cards = Card.all
+    @categories =  Category.all
+    @cards = params[:category_id] ? Card.find_by(category_id: params[:category_id]) : Card.all
+    @cards = [] unless @cards
   end
 
   # GET /cards/1
