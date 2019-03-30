@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190330104233) do
+ActiveRecord::Schema.define(version: 20190330120600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,10 +23,18 @@ ActiveRecord::Schema.define(version: 20190330104233) do
     t.time "event_date"
     t.string "title"
     t.string "max_users_count"
-    t.string "users"
     t.bigint "category_id"
     t.index ["category_id"], name: "index_cards_on_category_id"
     t.index ["users_id"], name: "index_cards_on_users_id"
+  end
+
+  create_table "cards_users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "users_id"
+    t.bigint "cards_id"
+    t.index ["cards_id"], name: "index_cards_users_on_cards_id"
+    t.index ["users_id"], name: "index_cards_users_on_users_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -59,4 +67,6 @@ ActiveRecord::Schema.define(version: 20190330104233) do
   end
 
   add_foreign_key "cards", "categories"
+  add_foreign_key "cards_users", "cards", column: "cards_id"
+  add_foreign_key "cards_users", "users", column: "users_id"
 end
