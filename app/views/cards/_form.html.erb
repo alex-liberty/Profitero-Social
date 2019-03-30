@@ -1,9 +1,18 @@
 <%= form_with(model: card, local: true) do |f| %>
 
-  <%= f.label :title %>:
+  <%= f.label :Type %>:
+  <%= f.select :category_id, categories_list.map{|cat| [cat.name,cat.id] } %><br />
+
+  <%= f.label :Title %>:
   <%= f.text_field :title %><br />
 
-  <%= f.label :name %>:
+  <%= f.label :Description %>:
+  <%= f.text_field :name %><br />
+
+  <%= f.label :Date %>:
+  <%= f.date_field :name %><br />
+
+  <%= f.label :'People count' %>:
   <%= f.text_field :name %><br />
 
   <% if card.errors.any? %>
