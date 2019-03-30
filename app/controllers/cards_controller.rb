@@ -16,7 +16,6 @@ class CardsController < ApplicationController
   def index
     @categories =  Category.includes(:users).all
     @cards = params[:category_id] ? Card.where(category_id: params[:category_id]).all : Card.all
-    @cards = [] unless @cards
   end
 
   # GET /cards/1
