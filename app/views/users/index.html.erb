@@ -13,6 +13,9 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.name %></td>
+        <td><%= user.about %></td>
+        <td><%= user.hobbies %></td>
+        <td><%= user.gender %></td>
         <td><%= link_to 'Show', user %></td>
       </tr>
     <% end %>
