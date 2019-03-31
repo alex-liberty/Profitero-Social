@@ -14,8 +14,7 @@
   <div class="backgroud-blue"></div>
   <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
     <a class="title navbar-brand offset-lg-1" href="/cards">
-      <%= image_tag image_path("logo-icon.png"), class:"logo"%>
-      ProfiteroSocial
+      <%= image_tag image_path("logo-full.png"), class:"logo" %>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -37,6 +36,7 @@
           Hi,
           <a class="username" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= current_user.only_name %>
+			<div class="user-avatar" style="background-image:url(<%= current_user.avatar %>);"></div>
           </a>
           <div class="dropdown-menu">
             <%= link_to "Профиль", edit_me_path, id: "profile",class:"dropdown-item" %>
@@ -57,6 +57,10 @@
   <% else %>
 
   <form class="form-signin">
+	<div class="flex-center-orig">
+	  <%= image_tag image_path("logo-full-vertical.png"), class:"logo-app", width: "261px"%>
+	</div>
+	
     <%= link_to("/auth/google_oauth2", id: "sign_in", class:"btn btn-lg btn-primary btn-block btn-google") do%>
       <div class="google flex-center-orig">
         <%= image_tag image_path("google.png"), class:"logo-google"%>
