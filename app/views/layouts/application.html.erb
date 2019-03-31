@@ -2,6 +2,7 @@
 <html class="<%= "height-100" if request.env["REQUEST_PATH"] == '/login/show' %>">
 <head>
   <title>Profitero social</title>
+  <%= favicon_link_tag asset_path("favicon.ico") %>
   <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
@@ -10,6 +11,7 @@
 <body class="<%= "flex-center" unless current_user %>">
 
   <% if current_user %>
+  <div class="backgroud-blue"></div>
   <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
     <a class="title navbar-brand offset-lg-1" href="/cards">
       <%= image_tag image_path("logo-icon.png"), class:"logo"%>
@@ -32,8 +34,9 @@
       </ul>
       <div class="mt-2 mt-md-0 rigth-margin">
         <div class="btn-group mr-sm-2">
+          Hi,
           <a class="username" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= current_user.name %>
+            <%= current_user.only_name %>
           </a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#">Профиль</a>
