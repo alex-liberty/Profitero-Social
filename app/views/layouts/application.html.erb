@@ -36,7 +36,7 @@
           Hi,
           <a class="username" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= current_user.only_name %>
-			<div class="user-avatar" style="background-image:url(<%= current_user.avatar %>);"></div>
+			<div class="user-avatar" style="background-image:url('<%= current_user.avatar %>');"></div>
           </a>
           <div class="dropdown-menu">
             <%= link_to "Профиль", edit_me_path, id: "profile",class:"dropdown-item" %>

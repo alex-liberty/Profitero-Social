@@ -131,30 +131,31 @@ h1 {
 
 .form-signin > a{
   display: table;
-  padding: 5px;
-  font-size: 24px;
+  padding: 10px 15px;
+  font-size: 22px;
   text-align: right;
 }
 .form-signin > a span {
   display: inline-block;
-  line-height: 42px;
+  line-height: 44px;
   padding-left: 10px;
 }
 .google{
   display: table;
-  padding: 10px;
+  padding: 6px;
   float: left;
-  border-radius: 6px;
+  border-radius: 4px;
+  line-height: 1;
   background-color: white; 
 }
 
 .logo-google{
-  width: 42px;
-  height: 42px;
+  width: 32px;
+  height: 32px;
 }
 .btn-google{
   padding: 0;
-  border-radius: 6px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
