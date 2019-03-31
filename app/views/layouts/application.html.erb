@@ -12,40 +12,44 @@
 
   <% if current_user %>
   <div class="backgroud-blue"></div>
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
-    <a class="title navbar-brand offset-lg-1" href="/cards">
-      <%= image_tag image_path("logo-full.png"), class:"logo" %>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/cards">События <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/users">Люди</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Карта</a>
-        </li>
-      </ul>
-      <div class="mt-2 mt-md-0 rigth-margin">
-        <div class="btn-group mr-sm-2">
-          Hi,
-          <a class="username" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= current_user.only_name %>
-			<div class="user-avatar" style="background-image:url('<%= current_user.avatar %>');"></div>
-          </a>
-          <div class="dropdown-menu">
-            <%= link_to "Профиль", edit_me_path, id: "profile",class:"dropdown-item" %>
-            <div class="dropdown-divider"></div>
-            <%= link_to "Выйти", signout_path, id: "sign_out",class:"dropdown-item" %>
-          </div>
-        </div>
-      </div>
-    </div>
+  <nav id="main-nav" class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
+	  <div class="container">
+		<a class="branding" href="/cards">
+		  <%= image_tag image_path("logo-full.png"), class:"logo" %>
+		</a>
+		
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+		
+		<div class="collapse navbar-collapse" id="navbarCollapse">
+		  <ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+			  <a class="nav-link" href="/cards">События <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="/users">Люди</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="#">Карта</a>
+			</li>
+		  </ul>
+		  <div class="mt-2 mt-md-0 rigth-margin">
+			<div class="btn-group mr-sm-2">
+			  Hi,&nbsp;
+			  <a class="username" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<%= current_user.only_name %>
+				<div class="user-avatar" style="background-image:url('<%= current_user.avatar %>');"></div>
+			  </a>
+			  <div class="dropdown-menu">
+				<%= link_to "Профиль", edit_me_path, id: "profile",class:"dropdown-item" %>
+				<div class="dropdown-divider"></div>
+				<%= link_to "Выйти", signout_path, id: "sign_out",class:"dropdown-item" %>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	</div>
   </nav>
     <div class="main">
       <% if current_user %>
