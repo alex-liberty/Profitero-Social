@@ -222,8 +222,8 @@ input.form-control.sidebar-form {
   display: flex;
 }
 
-.backgroud-blue{
-  position: absolute;
+.backgroud-blue{ 
+  display:block;
   background-image: linear-gradient(to bottom left, #72c7f0, #005c9b);
   width: 100%;
   height: 150px;
