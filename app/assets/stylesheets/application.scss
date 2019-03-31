@@ -29,18 +29,7 @@ $gray: #808080;
 $blue: #005c9b;
 $light_blue: #72c7f0;
 
-.nav{
-  height: 100px;
-}
-.logo{
-  margin-top: -15px;
-  height: 34px;
-  width: auto;
-}
-.nav > div > span{
-  font-size: 50px;
-  font-weight: 100;
-}
+
 .logo-app {
   margin-bottom: 50px;
 }
@@ -53,16 +42,8 @@ h1 {
 .strong{
     font-weight: 600;
 }
-.username{
-  cursor:pointer;
-}
-.user-avatar {
-	position: relative;
-	background-size: cover;
-	background-position: center;
-	overflow: hidden;
-	border-radius: 3px;
-}
+
+
 .title{
   font-size: 35px !important;
   
@@ -167,10 +148,42 @@ h1 {
 .branding {
 	display: table;
 	float: left;
-	padding: 0 25px 0 0;
+	padding: 0 30px 0 0;
+}
+.nav {
+  height: 100px;
+}
+.logo {
+  height: 34px;
+  width: auto;
+  margin: 7px 0;
+}
+
+
+.nav > div > span{
+  font-size: 50px;
+  font-weight: 100;
 }
 .navbar-light .navbar-nav .nav-link {
 	font-size: 20px;
+}
+
+.username{
+	span {
+		line-height: 46px;
+	}
+	
+	.user-avatar {
+		position: relative;
+		display: inline-block;
+		width: 46px;
+		height: 46px;
+		float: right;
+		background-size: cover;
+		background-position: center;
+		overflow: hidden;
+		border-radius: 3px;
+	}
 }
 
 
