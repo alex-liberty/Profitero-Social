@@ -1,7 +1,7 @@
 @import "fonts";
 @import "bootstrap";
 
-* {font-family: "Gotham Pro", sans-serif;}
+html,body {font-family: "Gotham Pro", sans-serif !important;}
 
 @import "cards";
 
@@ -40,9 +40,12 @@ $light_blue: #72c7f0;
 .nav > div > span{
   font-size: 50px;
   font-weight: 100;
-
+}
+.logo-app {
+  margin-bottom: 50px;
 }
 h1 {
+    display: block;
 	font-size: 34px;
 	color: #fff;
 	font-weight: bold;
@@ -62,6 +65,11 @@ h1 {
 }
 .title{
   font-size: 35px !important;
+  
+}
+.events-text {
+  font-size: 16px;
+  display: block;
 }
 .rigth-margin{
   margin-right:100px;
@@ -122,29 +130,47 @@ h1 {
 }
 
 .form-signin > a{
-  width: 400px;
-  height: 100px;
-  font-size: 30px;
+  display: table;
+  padding: 10px 15px;
+  font-size: 22px;
   text-align: right;
 }
-
+.form-signin > a span {
+  display: inline-block;
+  line-height: 44px;
+  padding-left: 10px;
+}
 .google{
-  border-radius: 6px;
-  background-color: white;
-  height: 90px;
-  width: 90px;
-  margin-left: -11px;
-  margin-right: 25px;
+  display: table;
+  padding: 6px;
+  float: left;
+  border-radius: 4px;
+  line-height: 1;
+  background-color: white; 
 }
 
 .logo-google{
-  width: 75px;
-  height: 75px;
+  width: 32px;
+  height: 32px;
 }
 .btn-google{
   padding: 0;
-  border-radius: 6px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
+#main-nav {
+	padding: 30px 0;
+}
+.branding {
+	display: table;
+	float: left;
+	padding: 0 25px 0 0;
+}
+.navbar-light .navbar-nav .nav-link {
+	font-size: 20px;
+}
+
+

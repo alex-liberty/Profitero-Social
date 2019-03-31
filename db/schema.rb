@@ -12,10 +12,13 @@
 
 ActiveRecord::Schema.define(version: 20190331095456) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "cards", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "users_id"
+    t.bigint "users_id"
     t.string "name"
     t.string "title"
     t.integer "category_id"
@@ -28,8 +31,8 @@ ActiveRecord::Schema.define(version: 20190331095456) do
   create_table "cards_users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "users_id"
-    t.integer "cards_id"
+    t.bigint "users_id"
+    t.bigint "cards_id"
     t.index ["cards_id"], name: "index_cards_users_on_cards_id"
     t.index ["users_id", "cards_id"], name: "index_cards_users_on_users_id_and_cards_id", unique: true
   end
@@ -54,8 +57,8 @@ ActiveRecord::Schema.define(version: 20190331095456) do
   end
 
   create_table "tags_users", force: :cascade do |t|
-    t.integer "users_id"
-    t.integer "tags_id"
+    t.bigint "users_id"
+    t.bigint "tags_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["tags_id"], name: "index_tags_users_on_tags_id"
@@ -75,4 +78,7 @@ ActiveRecord::Schema.define(version: 20190331095456) do
     t.string "email"
   end
 
+  add_foreign_key "cards", "categories"
+  add_foreign_key "cards_users", "cards", column: "cards_id"
+  add_foreign_key "cards_users", "users", column: "users_id"
 end

@@ -26,7 +26,7 @@ class CardsController < ApplicationController
   # GET /cards/1.json
   def show
     @categories =  Category.all
-    @messages = Chat.all
+    @messages = Chat.where(chat_id:params["id"]).all
     @message = Chat.new
   end
 
@@ -62,7 +62,6 @@ class CardsController < ApplicationController
 
   def create_message
     @card = Card.find_by(id: params[:id])
-    binding.pry
     params_ = chat_params
     params_[:chat_id] = params[:id]
     puts params_

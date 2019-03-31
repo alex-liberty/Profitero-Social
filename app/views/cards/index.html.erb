@@ -1,11 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 
-
-<div class="container col-11 btn-create padding-top-bot flex-d">
-  <div class="col-3 flex-center">
+<div class="container padding-top-bot flex-d">
+  <div class="col-3">
 	<h1>Cобытия</h1>
-    <pre class="events-text">Все предстоящие события</pre>
+    <div class="events-text">Все предстоящие события</div>
   </div>
   <div class="col-md-4 col-lg-3 offset-md-5 offset-lg-6 col-sm-4 offset-sm-5">
     <button type="button" class="btn btn-create-grad btn-create btn-vw">
@@ -14,7 +13,7 @@
   </div>
 </div>
 
-<div class="container col-11 border shadow-sm rounded-lg main-index" >
+<div class="container border shadow-sm rounded-lg main-index" >
   <div class="row justify-content-center">
     <div class="col-9">
       <% @cards.each do |card| %>
