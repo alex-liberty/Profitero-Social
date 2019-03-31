@@ -54,7 +54,7 @@ input.form-control.sidebar-form {
 }
 
 .chat-box {
-  height: 83vh;
+  height: 70vh;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -228,6 +228,7 @@ input.form-control.sidebar-form {
   width: 100%;
   height:250px;
   margin-top: -100px;
+  z-index: -1000;
 }
 
 .main-index{
@@ -260,4 +261,32 @@ input.form-control.sidebar-form {
 
 .btn-vw{
   font-size:1.5vw;
+}
+
+.white{
+  color: white;
+}
+
+.width-90{
+  width: 90%;
+}
+
+.padding-160{
+  padding-left: 170px;
+}
+
+.chat-window{
+  background-color: white;
+  border-color: gray;
+  border: 1px solid gray;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.chat-title{
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid gray;
+  text-align: center;
+  font-size: 25px;
+  padding: 8px;
 }
