@@ -48,6 +48,13 @@ $light_blue: #72c7f0;
 .username{
   cursor:pointer;
 }
+.user-avatar {
+	position: relative;
+	background-size: cover;
+	background-position: center;
+	overflow: hidden;
+	border-radius: 3px;
+}
 .title{
   font-size: 35px !important;
 }
