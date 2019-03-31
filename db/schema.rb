@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190331064209) do
+ActiveRecord::Schema.define(version: 20190331095456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,10 +20,10 @@ ActiveRecord::Schema.define(version: 20190331064209) do
     t.datetime "updated_at", null: false
     t.bigint "users_id"
     t.string "name"
-    t.time "event_date"
     t.string "title"
-    t.string "max_users_count"
     t.bigint "category_id"
+    t.date "event_date"
+    t.integer "max_users_count"
     t.index ["category_id"], name: "index_cards_on_category_id"
     t.index ["users_id"], name: "index_cards_on_users_id"
   end
