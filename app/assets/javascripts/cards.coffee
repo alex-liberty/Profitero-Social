@@ -7,7 +7,8 @@ $(document).ready =>
   $('.sidebar-form').addClass('d-none')
   $('#message').removeAttr("disabled")
   $('#message').focus()
-  $("#chat-el").scrollTop($("#chat-el")[0].scrollHeight);
+
+  console.log(123)
 
   updateChat = (data) ->
     $('.chat-box').append """
@@ -22,9 +23,6 @@ $(document).ready =>
     """
     return
 
-  $('#chat-form').on 'ajax:success', (data) ->
-    $('#chat-form')[0].reset()
-    return
 
   Pusher.logToConsole = true;
   pusher = new Pusher("3c6ccc7df7bac821a8a5",
@@ -35,5 +33,6 @@ $(document).ready =>
     updateChat data
     return
   return
+
 
 

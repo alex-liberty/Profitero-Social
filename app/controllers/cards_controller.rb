@@ -62,11 +62,15 @@ class CardsController < ApplicationController
 
   def create_message
     @card = Card.find_by(id: params[:id])
-    @message = Chat.new(chat_params)
+    binding.pry
+    params_ = chat_params
+    params_[:chat_id] = params[:id]
+    puts params_
+    @message = Chat.new(params_)
     respond_to do |format|
       if @message.save
         p @message
-        format.html { redirect_to @card, notice: 'Message was successfully posted.' }
+        format.html { redirect_to @card }
         format.json { render :show, status: :created, location: @card }
       else
         format.html { render :new }
@@ -80,7 +84,7 @@ class CardsController < ApplicationController
   def update
     respond_to do |format|
       if @card.update(card_params)
-        format.html { redirect_to @card, notice: 'Card was successfully updated.' }
+        format.html { redirect_to @card }
         format.json { render :show, status: :ok, location: @card }
       else
         format.html { render :edit }
@@ -106,7 +110,7 @@ class CardsController < ApplicationController
   end
 
   def count_of_users(card)
-    return "#{card.users.size}из#{card.max_users_count}"
+    return "#{card.users.size} из #{card.max_users_count}"
   end
 
   def is_free_places?(card)

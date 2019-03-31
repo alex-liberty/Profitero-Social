@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container col-11 btn-create padding-top-bot flex-d">
-  <div class="col-3 flex-center">
+  <div class="col-3 flex-center" style="padding-top: 10px;">
     <h1 class="events-text">
       <%= @card.title %>
     </h1>
@@ -23,33 +23,15 @@
 
 <div class="flex-container">
   <div class="width-50 show-block">
-    <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-inner"><%= link_to 'Back', cards_path %></button>
-      <button type="button" class="btn btn-inner"><%= link_to 'Edit', edit_card_path(@card) %></button>
-    </div>
-    <h1>
-      <%= @card.title %>
-    </h1>
+    <div class="big-image"></div>
+    <h2 class="width-100 center-text">Описание</h2>
     <h3>
       <%=@card.name %>
     </h3>
     <h4>Когда: <%= @card.event_date %></h4>
-    <h4>Идут: <%= count_of_users(@card) %></h4>
+    <h4>Кто идёт: <%= count_of_users(@card) %></h4>
     <h7 class="gray-text"><%=@card.users.map(&:name).join(", ") %></h7><br>
 
-    <% if @card.users.find {|user| user.id == current_user[:id]}  %>
-      <button  class="btn btn-red">
-        <%= link_to "Отказаться", unsubscribe_card_path(id: @card.id, user_id: current_user[:id]), method: :post, class:"red-text"%>
-      </button>
-    <% else %>
-      <% if is_free_places?(@card) %>
-        <button  class="btn btn-red" >
-          <%= link_to "Присоединиться", subscribe_card_path(id: @card.id, user_id: current_user[:id]), method: :post, class:"red-text" %>
-        </button>
-      <% else %>
-        <h5 class="red-text"> Места закончились</h5>
-      <% end %>
-    <% end %>
   </div>
 
   <div class="chat width-50 show-block">
@@ -80,17 +62,13 @@
                 <% if @message.errors.any? %>
                   <div id="error_explanation">
                     <h2><%= pluralize(@message.errors.count, "error") %> prohibited this chat from being saved:</h2>
-                    <ul>
-                      <% @message.errors.full_messages.each do |message| %>
-                        <li><%= message %></li>
-                      <% end %>
-                    </ul>
                   </div>
                 <% end %>
                 <div class="field position-relative">
 
                   <%= form.text_field :message, id: :message, required: true, class:"msg_input", placeholder: "Введите сообщение" %>
-                  <%= form.hidden_field :username, id: :username %>
+                  <%= form.hidden_field :username, id: :username  %>
+                  <%= form.hidden_field :chat_id, id: params["id"]  %>
                 </div>
               <% end %>
             </div>
@@ -100,4 +78,7 @@
     </div>
   </div>
 </div>
-
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-inner"><%= link_to 'Back', cards_path %></button>
+  <button type="button" class="btn btn-inner"><%= link_to 'Edit', edit_card_path(@card) %></button>
+</div>
