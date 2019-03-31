@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-5.times do |ind|
-  Card.create("name" => "name #{ind}", "title" => "title #{ind}")
-end
+# 5.times do |ind|
+#   Card.create("name" => "name #{ind}", "title" => "title #{ind}")
+# end
 
 Category.create("name" => "Games")
 Category.create("name" => "Food")
