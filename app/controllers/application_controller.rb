@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
     @categories_list = Category.all
   end
 
+
+
   def check_login
     #binding.pry
     if !session[:user_id] && request.env["REQUEST_URI"] != "/login/show"

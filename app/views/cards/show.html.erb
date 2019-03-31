@@ -1,18 +1,46 @@
 <p id="notice"><%= notice %></p>
 
+
+
 <div class="flex-container">
   <div class="width-50 show-block">
-    <%= render "card", card:@card %>
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-inner"><%= link_to 'Back', cards_path %></button>
+      <button type="button" class="btn btn-inner"><%= link_to 'Edit', edit_card_path(@card) %></button>
+    </div>
+    <h1>
+      <%= @card.title %>
+    </h1>
+    <h3>
+      <%=@card.name %>
+    </h3>
+    <h4>Когда: <%= @card.event_date %></h4>
+    <h4>Идут: <%= count_of_users(@card) %></h4>
+    <h7 class="gray-text"><%=@card.users.map(&:name).join(", ") %></h7><br>
+
+    <% if @card.users.find {|user| user.id == current_user[:id]}  %>
+      <button  class="btn btn-red">
+        <%= link_to "Отказаться", unsubscribe_card_path(id: @card.id, user_id: current_user[:id]), method: :post, class:"red-text"%>
+      </button>
+    <% else %>
+      <% if is_free_places?(@card) %>
+        <button  class="btn btn-red" >
+          <%= link_to "Присоединиться", subscribe_card_path(id: @card.id, user_id: current_user[:id]), method: :post, class:"red-text" %>
+        </button>
+      <% else %>
+        <h5 class="red-text"> Места закончились</h5>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="chat width-50 show-block">
     <%# app/views/chats/index.html.erb %>
 
-    <div class="container-fluid">
+    <div class="">
       <div class="row">
-        <div class="col-9 col-md-10 bg-light full-height">
-          <div class="container-fluid">
-            <div class="chat-box py-2">
+        <div class="width-100">
+          <div>
+            <div class="chat-box py-2" id="chat-el">
               <h4 class="username d-none mb-3"></h4>
               <% @messages.each do |chat| %>
                 <div class="col-12">
@@ -38,7 +66,8 @@
                   </div>
                 <% end %>
                 <div class="field position-relative">
-                  <%= form.text_field :message, id: :message, class: "form-control", required: true %>
+
+                  <%= form.text_field :message, id: :message, required: true, class:"msg_input" %>
                   <%= form.hidden_field :username, id: :username %>
                 </div>
               <% end %>
@@ -49,5 +78,4 @@
     </div>
   </div>
 </div>
-<%= link_to 'Edit', edit_card_path(@card) %> |
-<%= link_to 'Back', cards_path %>
+

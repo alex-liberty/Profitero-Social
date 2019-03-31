@@ -1,12 +1,53 @@
-<div class = "card_div full-width">
-  <div><%= link_to card.title, card %></div>
-  <div><%= card.name %></div>
-  <div><%= card.event_date %></div>
-  <div><%= card.max_users_count %></div>
-  <div>Subscribers: <%= card.users.map(&:name).join(", ") %></div>
-  <% if card.users.find {|user| user.id == current_user[:id]} %>
-    <%= link_to "Unsubscribe", unsubscribe_card_path(id: card.id, user_id: current_user[:id]), method: :post %>
-  <% else %>
-    <%= link_to "Subscribe", subscribe_card_path(id: card.id, user_id: current_user[:id]), method: :post %>
-  <% end %>
+<div class="row no-gutters border rounded overflow-hidden flex-md-row card-margin shadow-sm h-md-250 position-relative">
+  <div class="col-auto d-none d-lg-block d-lg-lg-block">
+    <svg class="bd-placeholder-img" width="300" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+      <title>Placeholder</title>
+      <rect width="100%" height="100%" fill="#55595c"></rect>
+    </svg>
+  </div>
+  <div class="col p-4 d-flex flex-column position-static">
+    <% if @categories %>
+      <strong class="d-inline-block mb-2 text-primary <%= @categories.find{|cat| cat.id == card.category_id}.color %>-text">
+        <%= @categories.find{|cat| cat.id == card.category_id}.name %>
+      </strong>
+    <%end %>
+    <h2 class="mb-0 title-text"><%= card.title%></h2>
+    <%= puts card.event_date%>
+    <div class="mb-1 text-muted"><%= card.event_date %></div>
+    <p class="card-text mb-auto"><%= card.name %></p>
+
+    <%= link_to "Подробнее", card%>
+
+  </div>
+  <div class="col-auto d-none d-lg-block widtg-200px">
+    <div class="flex widtg-200px height-100 members">
+      <rect width="100%" height="100%" fill="#55595c"></rect>
+      <div class="flex-center column">
+        <h2>
+          <%=count_of_users(card)%>
+        </h2>
+        <p>
+          <%= card.users.map(&:name)[0..1].join(", ")%>
+          <%= more_than_two(card)%>
+        </p>
+        <% if card.users.find {|user| user.id == current_user[:id]}  %>
+          <button  class="btn btn-red">
+            <%= link_to "Отказаться", unsubscribe_card_path(id: card.id, user_id: current_user[:id]), method: :post, class:"red-text "%>
+          </button>
+        <% else %>
+          <% if is_free_places?(card) %>
+          <button  class="btn btn-red" >
+            <%= link_to "Присоединиться", subscribe_card_path(id: card.id, user_id: current_user[:id]), method: :post, class:"red-text " %>
+          </button>
+          <% else %>
+            <h5 class="red-text"> Места закончились</h5>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
 </div>
+
+
+
