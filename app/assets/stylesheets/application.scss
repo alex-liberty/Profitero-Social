@@ -29,18 +29,7 @@ $gray: #808080;
 $blue: #005c9b;
 $light_blue: #72c7f0;
 
-.nav{
-  height: 100px;
-}
-.logo{
-  margin-top: -15px;
-  height: 34px;
-  width: auto;
-}
-.nav > div > span{
-  font-size: 50px;
-  font-weight: 100;
-}
+
 .logo-app {
   margin-bottom: 50px;
 }
@@ -53,16 +42,8 @@ h1 {
 .strong{
     font-weight: 600;
 }
-.username{
-  cursor:pointer;
-}
-.user-avatar {
-	position: relative;
-	background-size: cover;
-	background-position: center;
-	overflow: hidden;
-	border-radius: 3px;
-}
+
+
 .title{
   font-size: 35px !important;
   
@@ -125,14 +106,14 @@ h1 {
   justify-content: center;
 }
 
-.form-signin{
+.form-signin {
   margin: auto;
 }
 
-.form-signin > a{
+.form-signin > a {
   display: table;
-  padding: 10px 15px;
-  font-size: 22px;
+  padding: 2px 10px 2px 2px;
+  font-size: 20px;
   text-align: right;
 }
 .form-signin > a span {
@@ -148,11 +129,18 @@ h1 {
   line-height: 1;
   background-color: white; 
 }
-
-.logo-google{
+.logo-google {
   width: 32px;
   height: 32px;
+  transform: rotate(-360deg);
+  transition: all 240ms ease-out;
 }
+#sign_in:hover .google .logo-google {
+	transform: rotate(360deg);
+	transition: all 320ms ease-in;
+}
+
+
 .btn-google{
   padding: 0;
   border-radius: 4px;
@@ -167,10 +155,42 @@ h1 {
 .branding {
 	display: table;
 	float: left;
-	padding: 0 25px 0 0;
+	padding: 0 30px 0 0;
+}
+.nav {
+  height: 100px;
+}
+.logo {
+  height: 34px;
+  width: auto;
+  margin: 7px 0;
+}
+
+
+.nav > div > span{
+  font-size: 50px;
+  font-weight: 100;
 }
 .navbar-light .navbar-nav .nav-link {
 	font-size: 20px;
+}
+
+.username{
+	span {
+		line-height: 46px;
+	}
+	
+	.user-avatar {
+		position: relative;
+		display: inline-block;
+		width: 46px;
+		height: 46px;
+		float: right;
+		background-size: cover;
+		background-position: center;
+		overflow: hidden;
+		border-radius: 3px;
+	}
 }
 
 

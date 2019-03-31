@@ -34,11 +34,10 @@
 			  <a class="nav-link" href="#">Карта</a>
 			</li>
 		  </ul>
-		  <div class="mt-2 mt-md-0 rigth-margin">
-			<div class="btn-group mr-sm-2">
-			  Hi,&nbsp;
+		  <div class="mt-2 mt-md-0">
+			<div class="btn-group mr-sm-2">			  
 			  <a class="username" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				<%= current_user.only_name %>
+				<span>Hi,&nbsp;<%= current_user.only_name %></span>
 				<div class="user-avatar" style="background-image:url('<%= current_user.avatar %>');"></div>
 			  </a>
 			  <div class="dropdown-menu">

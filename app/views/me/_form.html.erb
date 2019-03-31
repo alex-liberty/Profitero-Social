@@ -1,7 +1,14 @@
 <%= form_with(model: user, local: true, url: {controller: 'me', action: "update"}) do |form| %>
 
   <%= form.label :about %>:
-  <%= form.text_field :about %><br />
+  <%= form.text_area :about %><br />
+  <%= form.label :hobbies %>:
+  <%= form.text_area :hobbies %><br />
+  <div class="form-group">
+    <%= form.label :gender %>:
+    <%= form.select :gender, [["Мужской", "Мужской"],["Женский", "Женский"],["Другой.", "Другой."]], {}, { :class => "form-control" } %>
+  </div><br />
+
 
   <% if user.errors.any? %>
     <div id="error_explanation">
