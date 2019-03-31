@@ -26,7 +26,6 @@ class CardsController < ApplicationController
   def show
     @messages = Chat.all
     @message = Chat.new
-
   end
 
   def categories_list
