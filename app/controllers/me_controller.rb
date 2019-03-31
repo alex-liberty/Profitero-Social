@@ -1,7 +1,6 @@
 class MeController < ApplicationController
 
   def edit
-    binding.pry
     @user = User.find(current_user[:id])
   end
 
