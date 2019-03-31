@@ -1,11 +1,49 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Cards</h1>
-<div class="flex-container wrap">
-    <% @cards.each do |card| %>
-      <div class="width-4-12">
-        <%=render 'card', card:card %>
-      </div>
-    <% end %>
+<div class="backgroud-blue">
+
 </div>
-<%= link_to 'New Card', new_card_path %>
+
+<div class="container col-11 btn-create padding-top-bot flex-d">
+  <div class="col-3 flex-center">
+    <pre class="events-text"> Все предстоящие события</pre>
+  </div>
+  <div class="col-md-4 col-lg-3 offset-md-5 offset-lg-6 col-sm-4 offset-sm-5">
+    <button type="button" class="btn btn-create-grad btn-create btn-vw">
+      <%= link_to 'Создать событие', new_card_path %>
+    </button>
+  </div>
+</div>
+
+<div class="container col-11 border shadow-sm rounded-lg main-index" >
+  <div class="row justify-content-center">
+    <div class="col-9">
+      <% @cards.each do |card| %>
+        <%=render 'card', card:card %>
+      <% end %>
+    </div>
+    <div class="col-3">
+      <div class="cats-right">
+        <h3>Категория</h3>
+        <div class="cat">
+            <div class="container">
+              <div class="row">
+                <% @categories.each do |cat| %>
+                  
+                <div class="col-1">
+                  <div class="pipe red flex"></div>
+                </div>
+                <div class="col flex">
+                  <input type="checkbox" aria-label="Checkbox for following text input">
+                  <label><%= cat.name %></label>
+                </div>
+                <% end %>
+                <div class="w-100"></div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

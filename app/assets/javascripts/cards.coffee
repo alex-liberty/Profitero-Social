@@ -7,6 +7,7 @@ $(document).ready =>
   $('.sidebar-form').addClass('d-none')
   $('#message').removeAttr("disabled")
   $('#message').focus()
+  $("#chat-el").scrollTop($("#chat-el")[0].scrollHeight);
 
   updateChat = (data) ->
     $('.chat-box').append """
@@ -34,3 +35,5 @@ $(document).ready =>
     updateChat data
     return
   return
+
+

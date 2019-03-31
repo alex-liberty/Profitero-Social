@@ -1,5 +1,8 @@
 class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
+  helper_method :more_than_two
+  helper_method :count_of_users
+  helper_method :is_free_places?
 
   def subscribe
     CardsUser.find_or_create_by(users_id: params[:user_id], cards_id: params[:id])
@@ -14,7 +17,7 @@ class CardsController < ApplicationController
   # GET /cards
   # GET /cards.json
   def index
-    @categories =  Category.includes(:users).all
+    @categories =  Category.all
     @cards = params[:category_id] ? Card.where(category_id: params[:category_id]).all : Card.all
   end
 
@@ -23,7 +26,6 @@ class CardsController < ApplicationController
   def show
     @messages = Chat.all
     @message = Chat.new
-
   end
 
   def categories_list
@@ -94,6 +96,24 @@ class CardsController < ApplicationController
       format.html { redirect_to cards_url, notice: 'Card was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def more_than_two(card)
+    if card.users && card.users.size > 2
+      return "и ещё #{card.users.size - 2}"
+    end
+  end
+
+  def count_of_users(card)
+    return "#{card.users.size}из#{card.max_users_count}"
+  end
+
+  def is_free_places?(card)
+    return card.users.size < card.max_users_count.to_i
+  end
+
+  def show_cats
+
   end
 
   private
