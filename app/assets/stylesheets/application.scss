@@ -185,16 +185,22 @@ h1 {
 
 .username{
 	span {
+		float: left;
 		line-height: 46px;
 		padding-right: 15px;
+	}
+	
+	i {
+		float: right;
+		line-height: 46px;
+		margin-left: 10px;
 	}
 	
 	.user-avatar {
 		position: relative;
 		display: inline-block;
 		width: 46px;
-		height: 46px;
-		float: right;
+		height: 46px; 
 		background-size: cover;
 		background-position: center;
 		overflow: hidden;
@@ -203,7 +209,12 @@ h1 {
 }
 
 
-.btn-create-grad { border:none; line-height: 1;}
+.btn-create-grad { 
+	border:none; 
+	line-height: 1;
+	float: right;
+	font-size: 18px;
+}
 
 
 .main-create{
