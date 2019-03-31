@@ -106,14 +106,14 @@ h1 {
   justify-content: center;
 }
 
-.form-signin{
+.form-signin {
   margin: auto;
 }
 
-.form-signin > a{
+.form-signin > a {
   display: table;
-  padding: 10px 15px;
-  font-size: 22px;
+  padding: 2px 10px 2px 2px;
+  font-size: 20px;
   text-align: right;
 }
 .form-signin > a span {
@@ -129,11 +129,18 @@ h1 {
   line-height: 1;
   background-color: white; 
 }
-
-.logo-google{
+.logo-google {
   width: 32px;
   height: 32px;
+  transform: rotate(-360deg);
+  transition: all 240ms ease-out;
 }
+#sign_in:hover .google .logo-google {
+	transform: rotate(360deg);
+	transition: all 320ms ease-in;
+}
+
+
 .btn-google{
   padding: 0;
   border-radius: 4px;
