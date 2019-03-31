@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
+.bg-secondary{
+  background-color: $red !important;
+}
 .card_div {
   border: 1px solid #2E2F30;
   padding: 10px;
@@ -33,7 +37,10 @@
   overflow: hidden;
 }
 .chat{
-  margin: 0px !important;
+  margin: 3px !important;
+  border-radius: 4px;
+  margin: 3px;
+  padding: 4px;
 }
 
 body {
@@ -243,6 +250,8 @@ input.form-control.sidebar-form {
   color:white;
   overflow: visible;
   margin: 0;
+  margin-left: 40px;
+  font-size: 35px !important;
 }
 .flex-center{
   display: flex;
@@ -301,4 +310,9 @@ input.form-control.sidebar-form {
 
 .center-text{
   text-align: center;
+}
+.create-card{
+  width: 100%;
+  text-align: center;
+  margin-top: 44px;
 }
