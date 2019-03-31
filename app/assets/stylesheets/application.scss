@@ -175,6 +175,10 @@ h1 {
 	font-size: 20px;
 	margin: 0 15px;
 }
+.nav-item .active {
+	background: rgba(0,0,0,0.04);
+    border-radius: 4px;
+}
 
 .username{
 	span {
@@ -194,5 +198,9 @@ h1 {
 		border-radius: 3px;
 	}
 }
+
+
+.btn-create-grad { border:none; line-height: 1;}
+
 
 
