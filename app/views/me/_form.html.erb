@@ -1,28 +1,43 @@
-<%= form_with(model: user, local: true, url: {controller: 'me', action: "update"}) do |form| %>
+<div class="container">
+  <div class="row">
 
-  <%= form.label :about %>:
-  <%= form.text_area :about %><br />
-  <%= form.label :hobbies %>:
-  <%= form.text_area :hobbies %><br />
-  <div class="form-group">
-    <%= form.label :gender %>:
-    <%= form.select :gender, [["Мужской", "Мужской"],["Женский", "Женский"],["Другой.", "Другой."]], {}, { :class => "form-control" } %>
-  </div><br />
+    <div class="col-md-8 col-md-offset-2">
 
+      <%= form_with(model: user, local: true, url: {controller: 'me', action: "update"}) do |f| %>
 
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this me from being saved:</h2>
+        <div class="form-group">
+          <label for="about">About</label>
+          <%= f.text_area :about, class: "form-control", :rows=>"5" %>
+        </div>
 
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <div class="form-group">
+          <label for="hobbies">Hobbies</label>
+          <%= f.text_area :hobbies, class: "form-control", :rows=>"5" %>
+        </div>
+
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <%= f.select :gender, [["Мужской", "Мужской"],["Женский", "Женский"],["Другой.", "Другой."]], {}, { :class => "form-control" } %>
+        </div><br />
+
+        <div class="form-group">
+          <%= f.submit 'Update user', :class => 'btn btn-primary' %>
+        </div>
+
       <% end %>
-      </ul>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
+    <% if user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this me from being saved:</h2>
+
+        <ul>
+          <% user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
   </div>
-<% end %>
+</div>
