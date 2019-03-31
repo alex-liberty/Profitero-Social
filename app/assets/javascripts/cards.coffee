@@ -27,10 +27,10 @@ $(document).ready =>
     return
 
   Pusher.logToConsole = true;
-  pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>',
-    cluster: '<%= ENV["PUSHER_CLUSTER"] %>'
+  pusher = new Pusher("3c6ccc7df7bac821a8a5",
+    cluster: "eu"
     encrypted: true)
-  channel = pusher.subscribe('chat')
+  channel = pusher.subscribe('card')
   channel.bind 'new', (data) ->
     updateChat data
     return

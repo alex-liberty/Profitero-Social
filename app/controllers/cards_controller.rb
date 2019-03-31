@@ -25,6 +25,7 @@ class CardsController < ApplicationController
   # GET /cards/1
   # GET /cards/1.json
   def show
+    @categories =  Category.all
     @messages = Chat.all
     @message = Chat.new
   end
