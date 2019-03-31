@@ -1,15 +1,12 @@
 class MeController < ApplicationController
 
-  # GET /me/1/edit
   def edit
+    binding.pry
     @user = User.find(current_user[:id])
   end
 
-  # PATCH/PUT /me/1
-  # PATCH/PUT /me/1.json
   def update
-    @user = User.new(me_params)
-
+    @user = User.find(current_user[:id])
     respond_to do |format|
       if @user.update(me_params)
         format.html { redirect_to controller: 'cards', action: 'index' }
@@ -29,6 +26,6 @@ class MeController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def me_params
-      params.fetch(:me, {})
+      params.fetch(:user, {}).permit!
     end
 end
