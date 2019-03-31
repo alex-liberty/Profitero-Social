@@ -248,9 +248,16 @@ input.form-control.sidebar-form {
   align-items: center;
 }
 
+.flex-center-center{
+  justify-content: center;
+}
 .btn-create-grad{
   background-image: linear-gradient(to right, $yellow, $red);
 }
 .column{
   flex-direction: column;
+}
+
+.btn-vw{
+  font-size:1.5vw;
 }

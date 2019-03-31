@@ -9,7 +9,7 @@
     <pre class="events-text"> Все предстоящие события</pre>
   </div>
   <div class="col-md-4 col-lg-3 offset-md-5 offset-lg-6 col-sm-4 offset-sm-5">
-    <button type="button" class="btn btn-create-grad btn-create">
+    <button type="button" class="btn btn-create-grad btn-create btn-vw">
       <%= link_to 'Создать событие', new_card_path %>
     </button>
   </div>
@@ -28,12 +28,16 @@
         <div class="cat">
             <div class="container">
               <div class="row">
+                <% @categories.each do |cat| %>
+                  
                 <div class="col-1">
                   <div class="pipe red flex"></div>
                 </div>
                 <div class="col flex">
-
+                  <input type="checkbox" aria-label="Checkbox for following text input">
+                  <label><%= cat.name %></label>
                 </div>
+                <% end %>
                 <div class="w-100"></div>
               </div>
             </div>
