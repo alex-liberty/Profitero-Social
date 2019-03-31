@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready =>
-  username = 'kkkkkkkkeeeekkkkk'#event.target.value
+  username = 'You'#event.target.value
   $('#username').val(username)
   $('.sidebar-form').addClass('d-none')
   $('#message').removeAttr("disabled")
