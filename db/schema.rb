@@ -10,21 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20190330163137) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
 
   create_table "cards", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "users_id"
+    t.integer "users_id"
     t.string "name"
     t.time "event_date"
     t.string "title"
     t.string "max_users_count"
-    t.bigint "category_id"
+    t.integer "category_id"
     t.index ["category_id"], name: "index_cards_on_category_id"
     t.index ["users_id"], name: "index_cards_on_users_id"
   end
@@ -32,8 +28,8 @@ ActiveRecord::Schema.define(version: 20190330163137) do
   create_table "cards_users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "users_id"
-    t.bigint "cards_id"
+    t.integer "users_id"
+    t.integer "cards_id"
     t.index ["cards_id"], name: "index_cards_users_on_cards_id"
     t.index ["users_id", "cards_id"], name: "index_cards_users_on_users_id_and_cards_id", unique: true
   end
@@ -57,8 +53,8 @@ ActiveRecord::Schema.define(version: 20190330163137) do
   end
 
   create_table "tags_users", force: :cascade do |t|
-    t.bigint "users_id"
-    t.bigint "tags_id"
+    t.integer "users_id"
+    t.integer "tags_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["tags_id"], name: "index_tags_users_on_tags_id"
@@ -76,7 +72,4 @@ ActiveRecord::Schema.define(version: 20190330163137) do
     t.string "about"
   end
 
-  add_foreign_key "cards", "categories"
-  add_foreign_key "cards_users", "cards", column: "cards_id"
-  add_foreign_key "cards_users", "users", column: "users_id"
 end

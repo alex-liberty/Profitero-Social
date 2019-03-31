@@ -32,6 +32,7 @@ class CardsController < ApplicationController
 
   # GET /cards/new
   def new
+    # binding 'prygit pull'
     @card = Card.new
     @message = Chat.new
   end
