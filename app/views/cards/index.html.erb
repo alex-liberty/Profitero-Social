@@ -28,16 +28,17 @@
         <div class="cat">
             <div class="container">
               <div class="row">
-                <% @categories.each do |cat| %>
-                  
-                <div class="col-1">
-                  <div class="pipe red flex"></div>
-                </div>
-                <div class="col flex">
-                  <input type="checkbox" aria-label="Checkbox for following text input">
-                  <label><%= cat.name %></label>
-                </div>
-                <% end %>
+                  <%= form_with(url: cards_path, method: "get",local: true) do |form|%>
+                    <% @categories.each do |cat| %>
+                      <%= form.label cat.name %>
+                      <% if @checked_categories && @checked_categories.find { |check_cat| check_cat.to_i == cat.id }%>
+                        <%= form.check_box "categories", {multiple: true, checked: true}, cat.id, nil %>
+                      <% else %>
+                        <%= form.check_box "categories", {multiple: true}, cat.id, nil %>
+                      <% end %>
+                    <% end %>
+                    <%= submit_tag("ПЫШ") %>
+                  <% end %>
                 <div class="w-100"></div>
               </div>
             </div>
