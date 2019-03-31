@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20190331095456) do
     t.integer "users_id"
     t.string "name"
     t.string "title"
-    t.bigint "category_id"
+    t.integer "category_id"
     t.date "event_date"
     t.integer "max_users_count"
     t.index ["category_id"], name: "index_cards_on_category_id"
