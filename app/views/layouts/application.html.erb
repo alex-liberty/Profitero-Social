@@ -2,6 +2,7 @@
 <html class="<%= "height-100" if request.env["REQUEST_PATH"] == '/login/show' %>">
 <head>
   <title>Profitero social</title>
+  <%= favicon_link_tag asset_path("favicon.ico") %>
   <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
@@ -38,7 +39,7 @@
             <%= current_user.only_name %>
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Профиль</a>
+            <%= link_to "Профиль", edit_me_path, id: "profile",class:"dropdown-item" %>
             <div class="dropdown-divider"></div>
             <%= link_to "Выйти", signout_path, id: "sign_out",class:"dropdown-item" %>
           </div>

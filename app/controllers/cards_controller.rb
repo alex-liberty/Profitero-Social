@@ -18,7 +18,8 @@ class CardsController < ApplicationController
   # GET /cards.json
   def index
     @categories =  Category.all
-    @cards = params[:category_id] ? Card.where(category_id: params[:category_id]).all : Card.all
+    @checked_categories = params["categories"]
+    @cards = params["categories"] ? Card.where(category_id: params["categories"]).all : Card.all
   end
 
   # GET /cards/1
@@ -135,5 +136,4 @@ class CardsController < ApplicationController
     def chat_params
       params.require(:chat).permit(:username, :message, :chat_id)
     end
-
 end
